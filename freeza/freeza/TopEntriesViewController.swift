@@ -149,14 +149,13 @@ extension TopEntriesViewController { // UITableViewDataSource
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.urlToDisplay = self.viewModel.entries[indexPath.row].url
-        self.performSegue(withIdentifier: TopEntriesViewController.showImageSegueIdentifier, sender: self)
+        self.presentImage(withURL: self.viewModel.entries[indexPath.row].url)
     }
 }
 
 extension TopEntriesViewController: EntryTableViewCellDelegate {
  
-    func presentImage(withURL url: URL) {
+    func presentImage(withURL url: URL?) {
         
         self.urlToDisplay = url
         self.performSegue(withIdentifier: TopEntriesViewController.showImageSegueIdentifier, sender: self)

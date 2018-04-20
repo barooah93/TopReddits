@@ -2,7 +2,7 @@ import UIKit
 
 protocol EntryTableViewCellDelegate {
     
-    func presentImage(withURL url: URL)
+    func presentImage(withURL url: URL?)
     func addOrRemoveFavorite(_ entryViewModel: EntryViewModel?)
 }
 extension EntryTableViewCellDelegate {
