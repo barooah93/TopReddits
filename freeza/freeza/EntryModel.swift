@@ -41,6 +41,5 @@ struct EntryModel {
         self.commentsCount = dictionary["num_comments"] as? Int
         self.url = urlFromDictionary(withAttributeName: "url")
         self.nsfw = dictionary["over_18"] as? Int
-       
     }
 }

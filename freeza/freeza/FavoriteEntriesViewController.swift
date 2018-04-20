@@ -109,6 +109,12 @@ extension FavoriteEntriesViewController : EntryTableViewCellDelegate {
         
         // Check if safe content is on
         if (UserPreferencesSingleton.getSafeContentPreference() && !entry.isContentSafe) {
+            let alertController = UIAlertController(title: "Error", message: "The \"SAFE\" setting is currently turned on, blocking any NSFW content from being viewed further", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Turn Off", style: .default, handler: { [weak self] (alert) in
+                self?.safeContentBarButtonSelected()
+            }))
+            self.present(alertController, animated: true, completion: nil)
             return
         }
         self.urlToDisplay = entry.url
