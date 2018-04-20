@@ -20,4 +20,10 @@ class UserPreferencesSingleton: NSObject {
         return UserDefaults.standard.set(flag, forKey: safeContentKey)
     }
     
+    static func inverseSafeContentPreference() -> Bool{
+        let flag = UserDefaults.standard.bool(forKey: safeContentKey)
+        UserDefaults.standard.set(!flag, forKey: safeContentKey)
+        return !flag
+    }
+    
 }

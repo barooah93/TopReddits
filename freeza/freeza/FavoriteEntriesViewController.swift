@@ -14,6 +14,7 @@ class FavoriteEntriesViewController: UITableViewController {
 
     var viewModel = TopEntriesViewModel()
     var urlToDisplay: URL?
+    var safeContentButtonItem: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,10 @@ class FavoriteEntriesViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Set proper text for safe content bar button item
+        let newFlag = UserPreferencesSingleton.getSafeContentPreference()
+        self.safeContentButtonItem?.title = newFlag ? "Safe" : "NSFW"
         
         // Reload views every time we come back to the screen
         self.tableView.reloadData()
@@ -47,6 +52,13 @@ class FavoriteEntriesViewController: UITableViewController {
     
     func configureViews(){
         
+        func configureNavBar() {
+            let safeText = UserPreferencesSingleton.getSafeContentPreference() ? "Safe" : "NSFW"
+            self.safeContentButtonItem = UIBarButtonItem(title: safeText, style: .plain, target: self, action: #selector(safeContentBarButtonSelected))
+            
+            self.navigationItem.rightBarButtonItem = safeContentButtonItem!
+        }
+        
         func configureTableView() {
             // Configure tableview for dynamic cell heights
             self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -54,9 +66,15 @@ class FavoriteEntriesViewController: UITableViewController {
             self.tableView.tableFooterView = UIView(frame: CGRect.zero) // Get rid of extra lines below at bottom of table
         }
         
+        configureNavBar()
         configureTableView()
     }
     
+    @objc private func safeContentBarButtonSelected(){
+        let newFlag = UserPreferencesSingleton.inverseSafeContentPreference()
+        
+        self.safeContentButtonItem?.title = newFlag ? "Safe" : "NSFW"
+    }
 
 }
 

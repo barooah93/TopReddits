@@ -43,7 +43,6 @@ class TopEntriesViewModel {
                 }
             
                 strongSelf.afterTag = data["after"] as? String
-            
                 let newEntries = children.map { dictionary -> EntryViewModel in
 
                     // Empty [String: AnyObject] dataDictionary will result in a non-nill EntryViewModel

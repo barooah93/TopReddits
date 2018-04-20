@@ -6,6 +6,7 @@ class TopEntriesViewController: UITableViewController {
     static let showImageSegueIdentifier = "showImageSegue"
     let viewModel = TopEntriesViewModel(withClient: RedditClient())
     let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    var safeContentButtonItem: UIBarButtonItem?
     let errorLabel = UILabel()
     let tableFooterView = UIView()
     let moreButton = UIButton(type: .system)
@@ -17,6 +18,13 @@ class TopEntriesViewController: UITableViewController {
         
         self.configureViews()
         self.loadEntries()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Set proper text for safe content bar button item
+        let newFlag = UserPreferencesSingleton.getSafeContentPreference()
+        self.safeContentButtonItem?.title = newFlag ? "Safe" : "NSFW"
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -69,9 +77,11 @@ class TopEntriesViewController: UITableViewController {
     
     private func configureViews() {
 
-        func configureActivityIndicatorView() {
-            
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.activityIndicatorView)
+        func configureNavBar() {
+            let activityInd = UIBarButtonItem(customView: self.activityIndicatorView)
+            let safeText = UserPreferencesSingleton.getSafeContentPreference() ? "Safe" : "NSFW"
+            self.safeContentButtonItem = UIBarButtonItem(title: safeText, style: .plain, target: self, action: #selector(safeContentBarButtonSelected))
+            self.navigationItem.rightBarButtonItems = [ safeContentButtonItem!, activityInd]
         }
 
         func configureTableView() {
@@ -104,7 +114,7 @@ class TopEntriesViewController: UITableViewController {
             self.toolbarItems = [errorItem, flexSpaceItem, retryItem, fixedSpaceItem, closeItem]
         }
         
-        configureActivityIndicatorView()
+        configureNavBar()
         configureTableView()
         configureToolbar()
     }
@@ -127,6 +137,12 @@ class TopEntriesViewController: UITableViewController {
             self.errorLabel.text = self.viewModel.errorMessage
             self.navigationController?.setToolbarHidden(false, animated: true)
         }
+    }
+    
+    @objc private func safeContentBarButtonSelected(){
+        let newFlag = UserPreferencesSingleton.inverseSafeContentPreference()
+        
+        self.safeContentButtonItem?.title = newFlag ? "Safe" : "NSFW"
     }
     
 }
