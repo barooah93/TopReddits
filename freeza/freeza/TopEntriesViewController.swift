@@ -23,7 +23,7 @@ class TopEntriesViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         // Set proper text for safe content bar button item
-        let newFlag = UserPreferencesSingleton.getSafeContentPreference()
+        let newFlag = UserPreferencesUtilities.getSafeContentPreference()
         self.safeContentButtonItem?.title = newFlag ? "Safe" : "NSFW"
     }
 
@@ -79,7 +79,7 @@ class TopEntriesViewController: UITableViewController {
 
         func configureNavBar() {
             let activityInd = UIBarButtonItem(customView: self.activityIndicatorView)
-            let safeText = UserPreferencesSingleton.getSafeContentPreference() ? "Safe" : "NSFW"
+            let safeText = UserPreferencesUtilities.getSafeContentPreference() ? "Safe" : "NSFW"
             self.safeContentButtonItem = UIBarButtonItem(title: safeText, style: .plain, target: self, action: #selector(safeContentBarButtonSelected))
             self.navigationItem.rightBarButtonItems = [ safeContentButtonItem!, activityInd]
         }
@@ -140,7 +140,7 @@ class TopEntriesViewController: UITableViewController {
     }
     
     @objc private func safeContentBarButtonSelected(){
-        let newFlag = UserPreferencesSingleton.inverseSafeContentPreference()
+        let newFlag = UserPreferencesUtilities.inverseSafeContentPreference()
         
         self.safeContentButtonItem?.title = newFlag ? "Safe" : "NSFW"
     }
@@ -176,7 +176,7 @@ extension TopEntriesViewController: EntryTableViewCellDelegate {
         guard let entry = entry else {return}
         
         // Check if safe content is on
-        if (UserPreferencesSingleton.getSafeContentPreference() && !entry.isContentSafe) {
+        if (UserPreferencesUtilities.getSafeContentPreference() && !entry.isContentSafe) {
             let alertController = UIAlertController(title: "Error", message: "The \"SAFE\" setting is currently turned on, blocking any NSFW content from being viewed further", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             alertController.addAction(UIAlertAction(title: "Turn Off", style: .default, handler: { [weak self] (alert) in

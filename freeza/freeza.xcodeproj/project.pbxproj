@@ -27,7 +27,7 @@
 		D19D510820894557003F75AB /* FavoriteEntrySingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D510720894557003F75AB /* FavoriteEntrySingleton.swift */; };
 		D19D510A208948D6003F75AB /* FavoriteEntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5109208948D6003F75AB /* FavoriteEntriesViewController.swift */; };
 		D19D511020895490003F75AB /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D510F20895490003F75AB /* FavoriteTableViewCell.swift */; };
-		D19D5114208A922C003F75AB /* UserPreferencesSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5113208A922C003F75AB /* UserPreferencesSingleton.swift */; };
+		D19D5114208A922C003F75AB /* UserPreferencesUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5113208A922C003F75AB /* UserPreferencesUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,7 @@
 		D19D510720894557003F75AB /* FavoriteEntrySingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEntrySingleton.swift; sourceTree = "<group>"; };
 		D19D5109208948D6003F75AB /* FavoriteEntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEntriesViewController.swift; sourceTree = "<group>"; };
 		D19D510F20895490003F75AB /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
-		D19D5113208A922C003F75AB /* UserPreferencesSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesSingleton.swift; sourceTree = "<group>"; };
+		D19D5113208A922C003F75AB /* UserPreferencesUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				31AA46E41D0B8DA9006C42BA /* EntryViewModel.swift */,
-				31AA46E81D0B9618006C42BA /* NSDate+AgeFormatter.swift */,
 				31AA46E21D0B885C006C42BA /* TopEntriesViewModel.swift */,
 			);
 			name = ViewModels;
@@ -190,6 +189,7 @@
 				31AA46FA1D0C5461006C42BA /* TableViewCells */,
 				31AA46DB1D0B4252006C42BA /* ViewControllers */,
 				31AA46DC1D0B425F006C42BA /* ViewModels */,
+				D1D7F089208AAA550012AA2F /* Utilities */,
 			);
 			path = freeza;
 			sourceTree = "<group>";
@@ -208,9 +208,17 @@
 			isa = PBXGroup;
 			children = (
 				D19D510720894557003F75AB /* FavoriteEntrySingleton.swift */,
-				D19D5113208A922C003F75AB /* UserPreferencesSingleton.swift */,
 			);
 			name = Singletons;
+			sourceTree = "<group>";
+		};
+		D1D7F089208AAA550012AA2F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				31AA46E81D0B9618006C42BA /* NSDate+AgeFormatter.swift */,
+				D19D5113208A922C003F75AB /* UserPreferencesUtilities.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,7 +329,7 @@
 				31AA46DA1D0B4249006C42BA /* EntryModel.swift in Sources */,
 				31AA46E51D0B8DA9006C42BA /* EntryViewModel.swift in Sources */,
 				D19D511020895490003F75AB /* FavoriteTableViewCell.swift in Sources */,
-				D19D5114208A922C003F75AB /* UserPreferencesSingleton.swift in Sources */,
+				D19D5114208A922C003F75AB /* UserPreferencesUtilities.swift in Sources */,
 				31CAC1471D0B412600E553AC /* AppDelegate.swift in Sources */,
 				31AA46E91D0B9618006C42BA /* NSDate+AgeFormatter.swift in Sources */,
 				31E7F2A91D0CFAFC00C7CA70 /* URLViewController.swift in Sources */,

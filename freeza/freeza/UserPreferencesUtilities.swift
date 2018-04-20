@@ -8,8 +8,9 @@
 
 import UIKit
 
-class UserPreferencesSingleton: NSObject {
+class UserPreferencesUtilities: NSObject {
     
+    static var hasLaunchedKey = "hasLaunched"
     static var safeContentKey = "safeContentPreference"
     
     static func getSafeContentPreference() -> Bool {
