@@ -86,7 +86,7 @@ extension FavoriteEntriesViewController { // Tableview datasource
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.urlToDisplay = self.viewModel.favorites[indexPath.row].imageURL
+        self.urlToDisplay = self.viewModel.favorites[indexPath.row].url
         self.performSegue(withIdentifier: FavoriteEntriesViewController.showImageSegueIdentifier, sender: self)
     }
     

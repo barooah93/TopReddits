@@ -60,7 +60,7 @@ class FavoriteTableViewCell: UITableViewCell {
 
     @IBAction func thumbnailButtonTapped(_ sender: Any) {
         
-        if let imageURL = self.entry?.imageURL {
+        if let imageURL = self.entry?.url {
             
             self.delegate?.presentImage(withURL: imageURL)
         }
