@@ -3,8 +3,12 @@ import UIKit
 protocol EntryTableViewCellDelegate {
     
     func presentImage(withURL url: URL)
+    func addOrRemoveFavorite(_ entryViewModel: EntryViewModel?)
 }
-
+extension EntryTableViewCellDelegate {
+    // Optional methods
+    func addOrRemoveFavorite(_ entryViewModel: EntryViewModel?){}
+}
 class EntryTableViewCell: UITableViewCell {
 
     static let cellId = "EntryTableViewCell"
@@ -24,6 +28,7 @@ class EntryTableViewCell: UITableViewCell {
     @IBOutlet private weak var commentsCountLabel: UILabel!
     @IBOutlet private weak var ageLabel: UILabel!
     @IBOutlet private weak var entryTitleLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     override func layoutSubviews() {
         
@@ -37,6 +42,14 @@ class EntryTableViewCell: UITableViewCell {
             
             self.delegate?.presentImage(withURL: imageURL)
         }
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        
+        // Favorite button is tapped
+        self.entry?.setFavorite()
+        self.favoriteButton.setImage(self.entry?.favoriteImage, for: .normal)
+        self.delegate?.addOrRemoveFavorite(self.entry)
     }
     
     private func configureViews() {
@@ -68,7 +81,7 @@ class EntryTableViewCell: UITableViewCell {
         self.commentsCountLabel.text = entry.commentsCount
         self.ageLabel.text = entry.age
         self.entryTitleLabel.text = entry.title
-        
+        self.favoriteButton.setImage(self.entry?.favoriteImage, for: .normal)
         entry.loadThumbnail { [weak self] in
             
             self?.thumbnailButton.setImage(entry.thumbnail, for: [])

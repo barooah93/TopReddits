@@ -2,6 +2,7 @@ import Foundation
 
 struct EntryModel {
 
+    let id: String?
     let title: String?
     let author: String?
     let creation: Date?
@@ -31,6 +32,7 @@ struct EntryModel {
             return URL(string: rawURL)
         }
         
+        self.id = dictionary["id"] as? String
         self.title = dictionary["title"] as? String
         self.author = dictionary["author"] as? String
         self.creation = dateFromDictionary(withAttributeName: "created_utc")

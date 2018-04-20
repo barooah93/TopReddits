@@ -113,7 +113,7 @@ class TopEntriesViewController: UITableViewController {
         
         self.errorLabel.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width - 92, height: 22)
     }
-    
+
     private func entriesReloaded() {
         
         self.activityIndicatorView.stopAnimating()
@@ -128,6 +128,7 @@ class TopEntriesViewController: UITableViewController {
             self.navigationController?.setToolbarHidden(false, animated: true)
         }
     }
+    
 }
 
 extension TopEntriesViewController { // UITableViewDataSource
@@ -146,6 +147,11 @@ extension TopEntriesViewController { // UITableViewDataSource
         
         return entryTableViewCell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.urlToDisplay = self.viewModel.entries[indexPath.row].imageURL
+        self.performSegue(withIdentifier: TopEntriesViewController.showImageSegueIdentifier, sender: self)
+    }
 }
 
 extension TopEntriesViewController: EntryTableViewCellDelegate {
@@ -154,5 +160,10 @@ extension TopEntriesViewController: EntryTableViewCellDelegate {
         
         self.urlToDisplay = url
         self.performSegue(withIdentifier: TopEntriesViewController.showImageSegueIdentifier, sender: self)
+    }
+    
+    func addOrRemoveFavorite(_ entryViewModel: EntryViewModel?) {
+        guard let entry = entryViewModel else {return}
+        FavoriteEntrySingleton.sharedInstance.addOrRemoveFavorite(entry)
     }
 }

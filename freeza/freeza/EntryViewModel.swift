@@ -6,6 +6,7 @@ class EntryViewModel {
     var hasError = false
     var errorMessage: String? = nil
 
+    let id: String?
     let title: String
     let author: String
     
@@ -25,10 +26,20 @@ class EntryViewModel {
     var thumbnail: UIImage
     let commentsCount: String
     let imageURL: URL?
+    var favoriteImage: UIImage {
+        get {
+            if isFavorite {
+                return UIImage(named: "favorite")!
+            } else {
+                return UIImage(named: "favorite_border")!
+            }
+        }
+    }
     
     private let creation: Date?
     private let thumbnailURL: URL?
     private var thumbnailFetched = false
+    private var isFavorite:Bool = false
 
     init(withModel model: EntryModel) {
         
@@ -38,6 +49,7 @@ class EntryViewModel {
             self.errorMessage = "Missing required field"
         }
 
+        self.id = model.id
         self.title = model.title ?? "Untitled"
         self.author = model.author ?? "Anonymous"
         self.thumbnailURL = model.thumbnailURL
@@ -45,8 +57,9 @@ class EntryViewModel {
         self.commentsCount = " \(model.commentsCount ?? 0) " // Leave space for the rounded corner. I know, not cool, but does the trick.
         self.creation = model.creation
         self.imageURL = model.imageURL
-
-        if model.title == nil ||
+        
+        if model.id == nil ||
+            model.title == nil ||
             model.author == nil ||
             model.creation == nil ||
             model.commentsCount == nil {
@@ -82,5 +95,14 @@ class EntryViewModel {
         }
             
         downloadThumbnailTask.resume()
+    }
+    
+    // Can manually set favorite flag, otherwise inverse it
+    func setFavorite(flag: Bool? = nil){
+        if let flag = flag {
+            self.isFavorite = flag
+        } else {
+            self.isFavorite = !self.isFavorite
+        }
     }
 }
