@@ -12,7 +12,7 @@ class FavoriteEntriesViewController: UITableViewController {
 
     static let showImageSegueIdentifier = "showImageSegue"
 
-    var viewModel = FavoriteEntriesViewModel()
+    var viewModel = TopEntriesViewModel()
     var urlToDisplay: URL?
     
     override func viewDidLoad() {
@@ -21,14 +21,13 @@ class FavoriteEntriesViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         self.configureViews()
-        self.loadFavorites()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Reload views every time we come back to the screen
-        self.loadFavorites()
+        self.tableView.reloadData()
     }
     
     // Function to handle when segue is about to occur
@@ -58,12 +57,6 @@ class FavoriteEntriesViewController: UITableViewController {
         configureTableView()
     }
     
-    func loadFavorites() {
-        // Loads data, and reloads table for updates
-        self.viewModel.getFavorites {
-            self.tableView.reloadData()
-        }
-    }
 
 }
 
@@ -71,7 +64,7 @@ extension FavoriteEntriesViewController { // Tableview datasource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.viewModel.favorites.count
+        return self.viewModel.getFavorites().count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,22 +72,28 @@ extension FavoriteEntriesViewController { // Tableview datasource
         let favoriteTableViewCell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.cellId, for: indexPath as IndexPath) as! FavoriteTableViewCell
         
         // Set cell data, and assign self as its delegate for message passing
-        favoriteTableViewCell.entry = self.viewModel.favorites[indexPath.row]
+        favoriteTableViewCell.entry = self.viewModel.getFavorites()[indexPath.row]
         favoriteTableViewCell.delegate = self
         
         return favoriteTableViewCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.presentImage(withURL: self.viewModel.favorites[indexPath.row].url)
+        self.presentImage(entry: self.viewModel.favorites[indexPath.row])
     }
     
 }
 
 extension FavoriteEntriesViewController : EntryTableViewCellDelegate {
     // Called when thumbnail is pressed on cell
-    func presentImage(withURL url: URL?) {
-        self.urlToDisplay = url
+    func presentImage(entry: EntryViewModel?) {
+        guard let entry = entry else {return}
+        
+        // Check if safe content is on
+        if (UserPreferencesSingleton.getSafeContentPreference() && !entry.isContentSafe) {
+            return
+        }
+        self.urlToDisplay = entry.url
         self.performSegue(withIdentifier: FavoriteEntriesViewController.showImageSegueIdentifier, sender: self)
     }
 }

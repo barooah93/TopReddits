@@ -5,14 +5,24 @@ class TopEntriesViewModel {
     var hasError = false
     var errorMessage: String? = nil
     var entries = [EntryViewModel]()
+    var favorites = [EntryViewModel]()
+    
+    
 
     private let client: Client
     private var afterTag: String? = nil
+    
+    convenience init() {
+        self.init(withClient: RedditClient())
+    }
 
     init(withClient client: Client) {
         
         self.client = client
+        
     }
+    
+
     
     func loadEntries(withCompletion completionHandler: @escaping () -> ()) {
         
@@ -71,5 +81,11 @@ class TopEntriesViewModel {
                     completionHandler()
                 }
         })
+    }
+    
+    // Gets favorite entries from the singleton
+    func getFavorites() -> [EntryViewModel]{
+        self.favorites = FavoriteEntrySingleton.sharedInstance.getFavoriteEntries()
+        return self.favorites
     }
 }

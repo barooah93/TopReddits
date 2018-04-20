@@ -2,7 +2,7 @@ import UIKit
 
 protocol EntryTableViewCellDelegate {
     
-    func presentImage(withURL url: URL?)
+    func presentImage(entry:EntryViewModel?)
     func addOrRemoveFavorite(_ entryViewModel: EntryViewModel?)
 }
 extension EntryTableViewCellDelegate {
@@ -37,11 +37,8 @@ class EntryTableViewCell: UITableViewCell {
     }
     
     @IBAction func thumbnailButtonTapped(_ sender: AnyObject) {
+        self.delegate?.presentImage(entry: entry)
         
-        if let url = self.entry?.url {
-            
-            self.delegate?.presentImage(withURL: url)
-        }
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {

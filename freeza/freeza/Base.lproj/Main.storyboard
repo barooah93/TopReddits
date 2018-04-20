@@ -119,7 +119,9 @@
                             <outlet property="delegate" destination="2Fm-PT-q0X" id="gUy-dD-Evp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Top Entries" id="ues-u9-1rD"/>
+                    <navigationItem key="navigationItem" title="Top Entries" id="ues-u9-1rD">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="jEc-AR-Z0J"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="aCN-S2-Zc5" kind="show" identifier="showImageSegue" id="kwL-93-PBZ"/>
                     </connections>

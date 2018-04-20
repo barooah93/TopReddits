@@ -26,6 +26,8 @@ class EntryViewModel {
     var thumbnail: UIImage
     let commentsCount: String
     let url: URL?
+    let isContentSafe: Bool
+    
     var favoriteImage: UIImage {
         get {
             if isFavorite {
@@ -57,6 +59,8 @@ class EntryViewModel {
         self.commentsCount = " \(model.commentsCount ?? 0) " // Leave space for the rounded corner. I know, not cool, but does the trick.
         self.creation = model.creation
         self.url = model.url
+        
+        self.isContentSafe = model.nsfw != 1
         
         if model.id == nil ||
             model.title == nil ||

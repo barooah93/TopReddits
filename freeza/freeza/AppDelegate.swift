@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Check if safe flag exists in user defaults, if not default to yes
+        if UserDefaults.standard.object(forKey: UserPreferencesSingleton.safeContentKey) == nil {
+            UserDefaults.standard.set(true, forKey: UserPreferencesSingleton.safeContentKey)
+        }
+        
         return true
     }
 

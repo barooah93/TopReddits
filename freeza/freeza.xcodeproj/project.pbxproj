@@ -26,8 +26,8 @@
 		31E7F2A91D0CFAFC00C7CA70 /* URLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E7F2A81D0CFAFC00C7CA70 /* URLViewController.swift */; };
 		D19D510820894557003F75AB /* FavoriteEntrySingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D510720894557003F75AB /* FavoriteEntrySingleton.swift */; };
 		D19D510A208948D6003F75AB /* FavoriteEntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5109208948D6003F75AB /* FavoriteEntriesViewController.swift */; };
-		D19D510C20894A2F003F75AB /* FavoriteEntriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D510B20894A2F003F75AB /* FavoriteEntriesViewModel.swift */; };
 		D19D511020895490003F75AB /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D510F20895490003F75AB /* FavoriteTableViewCell.swift */; };
+		D19D5114208A922C003F75AB /* UserPreferencesSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5113208A922C003F75AB /* UserPreferencesSingleton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +64,8 @@
 		31E7F2A81D0CFAFC00C7CA70 /* URLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLViewController.swift; sourceTree = "<group>"; };
 		D19D510720894557003F75AB /* FavoriteEntrySingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEntrySingleton.swift; sourceTree = "<group>"; };
 		D19D5109208948D6003F75AB /* FavoriteEntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEntriesViewController.swift; sourceTree = "<group>"; };
-		D19D510B20894A2F003F75AB /* FavoriteEntriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEntriesViewModel.swift; sourceTree = "<group>"; };
 		D19D510F20895490003F75AB /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		D19D5113208A922C003F75AB /* UserPreferencesSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesSingleton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,6 @@
 				31AA46E41D0B8DA9006C42BA /* EntryViewModel.swift */,
 				31AA46E81D0B9618006C42BA /* NSDate+AgeFormatter.swift */,
 				31AA46E21D0B885C006C42BA /* TopEntriesViewModel.swift */,
-				D19D510B20894A2F003F75AB /* FavoriteEntriesViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -209,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				D19D510720894557003F75AB /* FavoriteEntrySingleton.swift */,
+				D19D5113208A922C003F75AB /* UserPreferencesSingleton.swift */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -317,11 +317,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				31AA46E31D0B885C006C42BA /* TopEntriesViewModel.swift in Sources */,
-				D19D510C20894A2F003F75AB /* FavoriteEntriesViewModel.swift in Sources */,
 				31AA46E71D0B8F23006C42BA /* Client.swift in Sources */,
 				31AA46DA1D0B4249006C42BA /* EntryModel.swift in Sources */,
 				31AA46E51D0B8DA9006C42BA /* EntryViewModel.swift in Sources */,
 				D19D511020895490003F75AB /* FavoriteTableViewCell.swift in Sources */,
+				D19D5114208A922C003F75AB /* UserPreferencesSingleton.swift in Sources */,
 				31CAC1471D0B412600E553AC /* AppDelegate.swift in Sources */,
 				31AA46E91D0B9618006C42BA /* NSDate+AgeFormatter.swift in Sources */,
 				31E7F2A91D0CFAFC00C7CA70 /* URLViewController.swift in Sources */,
