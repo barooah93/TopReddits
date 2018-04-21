@@ -31,3 +31,6 @@ Questions to answer:
 
 		5. I would have added more unit tests for higher code coverage
 
+		6. A search feature would be nice to have to allow users to search for author or title of a post
+
+
