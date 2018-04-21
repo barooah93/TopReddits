@@ -29,3 +29,5 @@ Questions to answer:
 	
 		4. I would give capability to filter chronologically, by popularity, or by brand sponsored (might generate revenue)
 
+		5. I would have added more unit tests for higher code coverage
+

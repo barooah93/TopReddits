@@ -45,18 +45,21 @@ class AgeFormatterTests: XCTestCase {
         XCTAssertEqual(twentyThreeHoursAgo.age(sinceDate: presentTime), "23 hours ago")
         
         let aDayAgo = Date(timeInterval: -24 * 60 * 60, since: presentTime)
-        XCTAssertEqual(aDayAgo.age(sinceDate: presentTime), "A day ago")
-
-        let aDayAndHalfAgo = Date(timeInterval: -36 * 60 * 60, since: presentTime)
-        XCTAssertEqual(aDayAndHalfAgo.age(sinceDate: presentTime), "A day ago")
-
-        let fiveDaysAndHalfAgo = Date(timeInterval: -5 * 24 * 60 * 60, since: presentTime)
-        XCTAssertEqual(fiveDaysAndHalfAgo.age(sinceDate: presentTime), "5 days ago")
-
-        let sixDaysAgo = Date(timeInterval: -6 * 24 * 60 * 60, since: presentTime)
-        XCTAssertEqual(sixDaysAgo.age(sinceDate: presentTime), "A long time ago")
-
-        let tenDaysAgo = Date(timeInterval: -10 * 24 * 60 * 60, since: presentTime)
-        XCTAssertEqual(tenDaysAgo.age(sinceDate: presentTime), "A long time ago")
+        XCTAssertEqual(aDayAgo.age(sinceDate: presentTime), "Older")
+        
+//        let aDayAgo = Date(timeInterval: -24 * 60 * 60, since: presentTime)
+//        XCTAssertEqual(aDayAgo.age(sinceDate: presentTime), "A day ago")
+//
+//        let aDayAndHalfAgo = Date(timeInterval: -36 * 60 * 60, since: presentTime)
+//        XCTAssertEqual(aDayAndHalfAgo.age(sinceDate: presentTime), "A day ago")
+//
+//        let fiveDaysAndHalfAgo = Date(timeInterval: -5 * 24 * 60 * 60, since: presentTime)
+//        XCTAssertEqual(fiveDaysAndHalfAgo.age(sinceDate: presentTime), "5 days ago")
+//
+//        let sixDaysAgo = Date(timeInterval: -6 * 24 * 60 * 60, since: presentTime)
+//        XCTAssertEqual(sixDaysAgo.age(sinceDate: presentTime), "A long time ago")
+//
+//        let tenDaysAgo = Date(timeInterval: -10 * 24 * 60 * 60, since: presentTime)
+//        XCTAssertEqual(tenDaysAgo.age(sinceDate: presentTime), "A long time ago")
     }
 }
