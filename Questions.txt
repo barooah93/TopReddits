@@ -1,0 +1,31 @@
+CitrusByte IOS Coding Challenge
+
+Questions to answer:
+
+1.	When running the app, the title of a post will fit as much of the screen as possible, but always giving priority to the comments' count. How is this achieved?  
+	Answer: The author label has less content compression resistance priority than the comments label, so it will always shrink 
+	before the comments label.
+
+
+2.	Why are the completionHandlers dispatched on the DispatchQueue.main on the view model and not on the Client ? 
+		Answer:  With this architecture, the client should be abstracted from the UI, so since its task is to load data on a background thread, it should not worry about any UI changes, thus it should never be dispatching to main queue. The view model talks directly to the views, so it is necessary for it to dispatch on main queue when it is ready to make changes to the UI. 
+
+3.  	Some cells have different heights, but the tableView(_:heightForRowAt:) delegate method is not implemented, how is that possible? 
+		Answer: Thanks to these two lines of code:            
+		self.tableView.rowHeight = UITableViewAutomaticDimension
+		self.tableView.estimatedRowHeight = 110.0
+		Cells can have dynamic row heights and tableView (_:heightForRowAt :) is not necessary to implement.  This is also contingent on having proper constraints on the elements inside of the cell’s content view, as it needs to understand how it’s height will be calculated based on its content.
+	
+
+4. 	Open question, how would you improve the app? (other than the improvements we require next) 
+
+		Answer:
+
+		1. I would have moved the UI in the tableviewcell into a NIB instead of copying most of the elements into a new prototype cell since they layouts are almost identical.
+
+		2. I would have utilized core data to persist favorited objects to the device, so when the user reopens the app they will be able to see previously favorited entries. I felt this was out of scope given the limited time of the challenge. As a short term solution, I could have saved the objects in NSUserDefaults, but as this is not a decision I would have made in the real world, I did not do so.
+		
+		3. I would have allowed a way for the user to "unfavorite" an entry while on the favorites tab
+	
+		4. I would give capability to filter chronologically, by popularity, or by brand sponsored (might generate revenue)
+
