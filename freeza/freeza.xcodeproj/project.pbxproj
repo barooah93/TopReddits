@@ -28,6 +28,7 @@
 		D19D510A208948D6003F75AB /* FavoriteEntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5109208948D6003F75AB /* FavoriteEntriesViewController.swift */; };
 		D19D511020895490003F75AB /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D510F20895490003F75AB /* FavoriteTableViewCell.swift */; };
 		D19D5114208A922C003F75AB /* UserPreferencesUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5113208A922C003F75AB /* UserPreferencesUtilities.swift */; };
+		D1D7F08B208B80170012AA2F /* FavoriteEntrySingletonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7F08A208B80170012AA2F /* FavoriteEntrySingletonTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		D19D5109208948D6003F75AB /* FavoriteEntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEntriesViewController.swift; sourceTree = "<group>"; };
 		D19D510F20895490003F75AB /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		D19D5113208A922C003F75AB /* UserPreferencesUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesUtilities.swift; sourceTree = "<group>"; };
+		D1D7F08A208B80170012AA2F /* FavoriteEntrySingletonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEntrySingletonTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			children = (
 				31AA46ED1D0B97EE006C42BA /* NSDate+AgeFormatterTests.swift */,
 				31AA46F31D0C3F9E006C42BA /* TopEntriesViewModelTests.swift */,
+				D1D7F08A208B80170012AA2F /* FavoriteEntrySingletonTests.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				31AA46F41D0C3F9E006C42BA /* TopEntriesViewModelTests.swift in Sources */,
 				31AA46EE1D0B97EE006C42BA /* NSDate+AgeFormatterTests.swift in Sources */,
 				31AA46E11D0B4D2C006C42BA /* ReditClientTests.swift in Sources */,
+				D1D7F08B208B80170012AA2F /* FavoriteEntrySingletonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
