@@ -45,7 +45,7 @@ class EntryTableViewCell: UITableViewCell {
         
         // Favorite button is tapped
         self.entry?.setFavorite()
-        self.favoriteButton.setImage(self.entry?.favoriteImage, for: .normal)
+        self.favoriteButton.setBackgroundImage(self.entry?.favoriteImage, for: .normal)
         self.delegate?.addOrRemoveFavorite(self.entry)
     }
     
@@ -78,7 +78,7 @@ class EntryTableViewCell: UITableViewCell {
         self.commentsCountLabel.text = entry.commentsCount
         self.ageLabel.text = entry.age
         self.entryTitleLabel.text = entry.title
-        self.favoriteButton.setImage(self.entry?.favoriteImage, for: .normal)
+        self.favoriteButton.setBackgroundImage(self.entry?.favoriteImage, for: .normal)
         entry.loadThumbnail { [weak self] in
             
             self?.thumbnailButton.setImage(entry.thumbnail, for: [])

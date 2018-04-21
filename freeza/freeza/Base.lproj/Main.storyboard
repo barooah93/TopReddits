@@ -78,7 +78,8 @@
                                                 <constraint firstAttribute="height" constant="31" id="Scg-Or-24s"/>
                                                 <constraint firstAttribute="width" constant="32" id="dtI-Cy-GXH"/>
                                             </constraints>
-                                            <state key="normal" image="favorite_border"/>
+                                            <color key="tintColor" red="0.93502141497461932" green="0.84736115931184253" blue="0.10419344426299232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" backgroundImage="favorite_border"/>
                                             <connections>
                                                 <action selector="favoriteButtonTapped:" destination="4pU-iB-mch" eventType="touchUpInside" id="TPD-V0-tOm"/>
                                             </connections>
@@ -186,7 +187,7 @@
         <scene sceneID="Xky-FP-QP7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DrB-fV-66k" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Top Entries" id="wRs-Dy-icr"/>
+                    <tabBarItem key="tabBarItem" title="Top Entries" image="reddit_icon" id="wRs-Dy-icr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ahr-2X-kSx">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -325,9 +326,10 @@
     <resources>
         <image name="favorite" width="24" height="24"/>
         <image name="favorite_border" width="24" height="24"/>
+        <image name="reddit_icon" width="50" height="50"/>
         <image name="thumbnail-placeholder" width="90" height="90"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HaE-w6-Dn1"/>
+        <segue reference="kwL-93-PBZ"/>
     </inferredMetricsTieBreakers>
 </document>

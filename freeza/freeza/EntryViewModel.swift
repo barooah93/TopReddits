@@ -31,9 +31,9 @@ class EntryViewModel {
     var favoriteImage: UIImage {
         get {
             if isFavorite {
-                return UIImage(named: "favorite")!
+                return UIImage(named: "favorite")!.withRenderingMode(.alwaysTemplate)
             } else {
-                return UIImage(named: "favorite_border")!
+                return UIImage(named: "favorite_border")!.withRenderingMode(.alwaysTemplate)
             }
         }
     }
